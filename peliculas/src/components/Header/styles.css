@@ -1,0 +1,27 @@
+
+
+
+@media (max-width: 860px) {
+ nav{
+   flex-wrap: wrap;
+ }
+ .logoPadre {
+   order: 1;
+ }
+ .padreHeader {
+   order: 2;
+   width: 100%;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 10px 16px;
+ }
+ nav form {
+   order: 3;
+   width: 100%;
+ }
+ .search {
+   width: 100%;
+   min-width: 0;
+ }
+}
+   
