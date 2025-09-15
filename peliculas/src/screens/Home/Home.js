@@ -25,7 +25,13 @@ class Home extends Component {
           .catch(() => this.setState({ valoradas: [] }));
       }
      
-     
+     render(){
+      return(
+      <h1>hola</h1>
+        
+      )
+      
+     }
 }
 
 export default Home;
