@@ -1,0 +1,88 @@
+
+.grid {
+    align-items: start;      
+  }
+/* Card base */
+.card {
+  align-self: start; /* que no se estire con la fila */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Imagen con altura fija para igualar alto cerrado */
+.card img,
+.card .card-img-top {
+  width: 100%;
+  height: 260px;           /* altura fija del poster */
+  object-fit: cover;       /* recorta sin deformar */
+  display: block;
+}
+
+/* Placeholder cuando no hay poster */
+.card .card-img-top.placeholder {
+  background: #f3f3f3;
+  color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+/* Título: 2 líneas máximo para que el alto cerrado sea parejo */
+.card h4,
+.card .card-title {
+  margin: 12px 12px 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* clamp a 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.2em * 2); /* reserva el alto de 2 líneas */
+}
+
+/* Acciones con altura mínima para emparejar */
+.card .acciones,
+.card .cardBody {
+  padding: 12px;
+}
+
+.card .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px; /* fila de botones pareja cuando está cerrado */
+}
+
+.card .acciones button,
+.card .acciones a {
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d0d0d0;
+  background: #fafafa;
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card .acciones a {
+  border-color: #0a58ca;
+  color: #0a58ca;
+}
+
+/* La descripción solo aparece en la card abierta y hace crecer esa card */
+.card .descripcion,
+.card .card-text {
+  margin: 8px 12px 12px;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}

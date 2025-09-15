@@ -1,0 +1,175 @@
+/* --- Layout general de Home --- */
+.home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  
+  /* --- Secciones (grupos) --- */
+  .grupo {
+    margin-bottom: 40px;
+  }
+  
+  .grupo__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .grupo__header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  
+  .grupo__header a {
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid  #dfba34;
+    border-radius: 6px;
+    color:  #dfba34;
+  }
+  
+  .grupo__header a:hover {
+    background:  #dfba34;
+    color: #fff;
+  }
+  
+  /* --- Grid de cards --- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 100px;
+  }
+  
+  /* --- Card básica (aplica también a las Cards del componente) --- */
+  .card {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Imagen de la card */
+  .card img,
+  .card .card-img-top {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  /* Placeholder cuando no hay poster */
+  .card .card-img-top.placeholder {
+    height: 260px;
+    background: #f3f3f3;
+    color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+  
+  /* Título */
+  .card h4,
+  .card .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 12px 12px 0;
+  }
+  
+  /* Contenido y acciones */
+  .card .acciones,
+  .card .cardBody {
+    padding: 12px;
+  }
+  
+  .card .acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  /* Botones y enlaces dentro de la card */
+  .card .acciones button,
+  .card .acciones a {
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background: #fafafa;
+    color: #222;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .card .acciones a {
+    border-color:  #dfba34;
+    color:  #dfba34;
+  }
+  
+  .card .acciones button:hover {
+    background: #f0f0f0;
+  }
+  
+  .card .acciones a:hover {
+    background:  #dfba34;
+    color: #fff;
+  }
+  
+  /* Descripción desplegable */
+  .card .descripcion,
+  .card .card-text {
+    margin: 8px 12px 12px;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  
+  /* --- Buscador (si querés algo básico para el form) --- */
+  .buscador {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .buscador input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .buscador button {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid  #dfba34;
+    background: #dfba34;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .buscador button:hover {
+    filter: brightness(0.95);
+  }
+  
+  /* --- Responsive tweaks --- */
+  @media (max-width: 768px) {
+    .grupo__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+  }
