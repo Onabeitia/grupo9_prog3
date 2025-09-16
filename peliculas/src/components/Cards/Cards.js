@@ -9,46 +9,47 @@ class Cards extends Component {
       esFavorito: false
     };
   }
+  inferirTipo(movie) {
+    if (movie && movie.name && !movie.title) return 'serie';
+    return 'pelicula';
+  }
   componentDidMount() {
     const movie = this.props.movie;
-    const recupero = localStorage.getItem('favorito');
-    const favorito = JSON.parse(recupero);
-    if (movie && favorito && favorito.includes(movie.id)) {
+    const recupero = localStorage.getItem('favoritos'); // usamos plural y objetos
+    const favoritosArray = recupero ? JSON.parse(recupero) : [];
+    if (movie && favoritosArray.find(f => f && f.id === movie.id)) {
       this.setState({ esFavorito: true });
     }
   }
   verMasVerMenos = () => {
     this.setState({ verMas: !this.state.verMas });
   }
-  agregarFavorito = (id) => {
-    const recupero = localStorage.getItem('favorito');
-    const favorito = JSON.parse(recupero);
-    if (!favorito) {
-      localStorage.setItem('favorito', JSON.stringify([id]));
+  agregarFavorito = (movie) => {
+    if (!movie || !movie.id) return;
+    const tipo = this.inferirTipo(movie);
+    const recupero = localStorage.getItem('favoritos');
+    const favoritosArray = recupero ? JSON.parse(recupero) : [];
+    const yaEsta = favoritosArray.find(f => f && f.id === movie.id);
+    if (!yaEsta) {
+      favoritosArray.push({ id: movie.id, type: tipo });
+      localStorage.setItem('favoritos', JSON.stringify(favoritosArray));
       this.setState({ esFavorito: true });
-    } else {
-      if (!favorito.includes(id)) {
-        favorito.push(id);
-        localStorage.setItem('favorito', JSON.stringify(favorito));
-        this.setState({ esFavorito: true });
-      }
     }
   }
   eliminarFavorito = (id) => {
-    const recupero = localStorage.getItem('favorito');
-    const favorito = JSON.parse(recupero);
-    if (favorito) {
-      const actualizado = favorito.filter(function (favId) { return favId !== id; });
-      localStorage.setItem('favorito', JSON.stringify(actualizado));
-      this.setState({ esFavorito: false });
-    }
+    const recupero = localStorage.getItem('favoritos');
+    const favoritosArray = recupero ? JSON.parse(recupero) : [];
+    const actualizado = favoritosArray.filter(f => f && f.id !== id);
+    localStorage.setItem('favoritos', JSON.stringify(actualizado));
+    this.setState({ esFavorito: false });
   }
   render() {
     const movie = this.props.movie || {};
-    const titulo = movie.title || movie.name;
+    const titulo = movie.title || movie.name || 'Sin título';
+    const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : '';
     return (
       <article className="card">
-        <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={titulo} />
+        {poster ? <img src={poster} alt={titulo} /> : null}
         <h4>{titulo}</h4>
         <div className="acciones">
           <button onClick={this.verMasVerMenos}>
@@ -58,7 +59,7 @@ class Cards extends Component {
           {this.state.esFavorito ? (
             <button onClick={() => this.eliminarFavorito(movie.id)}>Quitar de favoritos</button>
           ) : (
-            <button onClick={() => this.agregarFavorito(movie.id)}>Agregar a favoritos</button>
+            <button onClick={() => this.agregarFavorito(movie)}>Agregar a favoritos</button>
           )}
         </div>
         {this.state.verMas && (

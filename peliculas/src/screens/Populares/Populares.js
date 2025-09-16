@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Cards from '../../components/Cards/Cards';
-import Buscador from '../../components/Buscador/Buscador';
 import './styles.css';
 
 class Populares extends Component {
@@ -43,7 +42,6 @@ class Populares extends Component {
     const peliculasFiltradas = this.filtrarPorQuery(peliculas);
     return (
       <main className="home">
-        <Buscador onChange={(valor) => this.setState({ query: valor })} onSubmit={(valor) => console.log('Buscar:', valor)} />
         <header className="grupo__header">
           <h2>Películas más populares</h2>
         </header>

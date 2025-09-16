@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Cards from '../../components/Cards/Cards';
-import Buscador from '../../components/Buscador/Buscador';
 import './styles.css'
 class Home extends Component {
   constructor(props) {
@@ -37,8 +36,6 @@ class Home extends Component {
     const valoradasFiltradas = this.filtrarPorQuery(this.state.valoradas);
     return (
       <main className="home">
-        {/* Formulario de búsqueda controlado */}
-        <Buscador onChange={(valor) => this.setState({ query: valor })} onSubmit={(valor) => console.log('Buscar:', valor)} />
         {/* Grupo 1: Populares (endpoint movie/popular) */}
         <section className="grupo">
           <header className="grupo__header">

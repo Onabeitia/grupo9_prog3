@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import Buscador from '../Buscador/Buscador';
 import './styles.css';
 
 
-function Header() {
+function Header({ onSearch }) {
+
     return (
         <nav>
             <ul className='header'>
@@ -14,6 +16,7 @@ function Header() {
                 <li><Link to='/populares' className='header2'>Populares</Link></li>
                 <li><Link to='/valoradas' className='header2'>Mas valoradas</Link></li>
             </ul>
+            <Buscador />
             <div className='logo'>
                 <h2>Udesa movies</h2>
                 <img src='https://images.vexels.com/media/users/3/203729/isolated/preview/d09f43d4116d9480cc034009b62428a7-dibujado-a-mano-camara-de-cine-de-cine.png' alt="logo" className='logo-img'></img>

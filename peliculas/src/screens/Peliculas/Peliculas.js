@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Cards from "../../components/Cards/Cards";
-import Buscador from "../../components/Buscador/Buscador"; 
 import "./styles.css"
 
 class Peliculas extends Component{
@@ -37,7 +36,6 @@ class Peliculas extends Component{
     render(){
         return(
             <main className="home">
-                 <Buscador onChange={(valor) => this.setState({ query: valor })} onSubmit={(valor) => console.log('Buscar:', valor)} />
                 <h1>Todas las películas</h1>
                 { this.state.pedidoInicialCompleto ?
                 <article>
