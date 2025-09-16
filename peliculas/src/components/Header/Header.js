@@ -8,9 +8,9 @@ function Header() {
        <nav>
            <ul className='header'>
                <li><Link to='/' className='' >Home</Link></li>
-               <li><Link to='/movies' className='header2'>Movies</Link></li>
+               <li><Link to='/movies' className='header2'>Peliculas</Link></li>
                <li><Link to='/series' className='header2'>Series</Link></li>
-               <li><Link to='/favorites' className='header2'>Favorites</Link></li>
+               <li><Link to='/favorites' className='header2'>Favoritos</Link></li>
                <li><Link to='/populares' className='header2'>Populares</Link></li>
                <li><Link to='/valoradas' className='header2'>Mas valoradas</Link></li>
            </ul>

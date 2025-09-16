@@ -5,6 +5,9 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Populares from './screens/Populares/Populares'
 import Valoradas from './screens/Valoradas/Valoradas'
+import NotFound from './screens/NotFound/NotFound'
+import Favoritos  from "./screens/Favoritos/Favoritos"  
+
 
 
 function App() {
@@ -15,6 +18,8 @@ function App() {
       <Route path='/' component={Home} exact={true}/> 
       <Route path='/populares' component={Populares}/> 
       <Route path='/Valoradas' component={Valoradas}/> 
+      <Route path='/favorites' component={Favoritos}/>
+      <Route component={NotFound}/>
     </Switch>
     <Footer />
    </React.Fragment>
