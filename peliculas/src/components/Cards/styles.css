@@ -1,10 +1,11 @@
-
 .grid {
-    align-items: start;      
-  }
+  align-items: start;
+}
+
 /* Card base */
 .card {
-  align-self: start; /* que no se estire con la fila */
+  align-self: start;
+  /* que no se estire con la fila */
   height: auto;
   display: flex;
   flex-direction: column;
@@ -18,8 +19,10 @@
 .card img,
 .card .card-img-top {
   width: 100%;
-  height: 260px;           /* altura fija del poster */
-  object-fit: cover;       /* recorta sin deformar */
+  height: 260px;
+  /* altura fija del poster */
+  object-fit: cover;
+  /* recorta sin deformar */
   display: block;
 }
 
@@ -40,10 +43,12 @@
   font-size: 1rem;
   line-height: 1.2;
   display: -webkit-box;
-  -webkit-line-clamp: 2;   /* clamp a 2 líneas */
+  -webkit-line-clamp: 2;
+  /* clamp a 2 líneas */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: calc(1.2em * 2); /* reserva el alto de 2 líneas */
+  min-height: calc(1.2em * 2);
+  /* reserva el alto de 2 líneas */
 }
 
 /* Acciones con altura mínima para emparejar */
@@ -57,7 +62,8 @@
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  min-height: 44px; /* fila de botones pareja cuando está cerrado */
+  min-height: 44px;
+  /* fila de botones pareja cuando está cerrado */
 }
 
 .card .acciones button,

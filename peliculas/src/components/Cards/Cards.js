@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css'
 class Cards extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       verMas: false,
       esFavorito: false
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     const movie = this.props.movie;
     const recupero = localStorage.getItem('favorito');
     const favorito = JSON.parse(recupero);
@@ -38,17 +38,17 @@ class Cards extends Component {
     const recupero = localStorage.getItem('favorito');
     const favorito = JSON.parse(recupero);
     if (favorito) {
-      const actualizado = favorito.filter(function(favId){ return favId !== id; });
+      const actualizado = favorito.filter(function (favId) { return favId !== id; });
       localStorage.setItem('favorito', JSON.stringify(actualizado));
       this.setState({ esFavorito: false });
     }
   }
-  render(){
+  render() {
     const movie = this.props.movie || {};
-    const titulo = movie.title || movie.name ;
+    const titulo = movie.title || movie.name;
     return (
       <article className="card">
-          <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={titulo} />
+        <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={titulo} />
         <h4>{titulo}</h4>
         <div className="acciones">
           <button onClick={this.verMasVerMenos}>

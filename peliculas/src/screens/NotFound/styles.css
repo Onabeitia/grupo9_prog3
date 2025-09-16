@@ -1,6 +1,6 @@
-.error{
+.error {
     font-weight: bold;
-    color:black;
+    color: black;
     display: flex;
     justify-content: center;
 }

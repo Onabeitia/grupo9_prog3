@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Cards from '../../components/Cards/Cards';
 import './style.css';
+
 class Favoritos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favoritos: []
+      favoritos: [],
+      cargando: true
     };
   }
   componentDidMount() {

@@ -4,7 +4,7 @@ import Cards from '../../components/Cards/Cards';
 import Buscador from '../../components/Buscador/Buscador';
 import './styles.css'
 class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       query: '',
@@ -12,7 +12,7 @@ class Home extends Component {
       valoradas: []
     };
   };
-  componentDidMount(){
+  componentDidMount() {
     // Dejo TUS fetch tal cual (apuntes: fetch -> then -> response.json())
     fetch('https://api.themoviedb.org/3/movie/popular?api_key=04e6a27eeae7267e69af197c8db319ff&language=es-ES&page=1')
       .then(r => r.json())
@@ -32,13 +32,13 @@ class Home extends Component {
     if (!busqueda) return buscado;
     return buscado.filter(pelicula => (pelicula.title || '').toLowerCase().includes(busqueda));
   };
-  render(){
+  render() {
     const popularesFiltradas = this.filtrarPorQuery(this.state.popular);
     const valoradasFiltradas = this.filtrarPorQuery(this.state.valoradas);
     return (
       <main className="home">
         {/* Formulario de búsqueda controlado */}
-        <Buscador  onChange={(valor) => this.setState({ query: valor })} onSubmit={(valor) => console.log('Buscar:', valor)}/>
+        <Buscador onChange={(valor) => this.setState({ query: valor })} onSubmit={(valor) => console.log('Buscar:', valor)} />
         {/* Grupo 1: Populares (endpoint movie/popular) */}
         <section className="grupo">
           <header className="grupo__header">
@@ -46,9 +46,9 @@ class Home extends Component {
             <Link to="/populares">Ver todas</Link>
           </header>
           <div className="grid">
-  {popularesFiltradas.slice(0, 4).map(movie => (
-    <Cards key={movie.id} movie={movie} /> ))}
-</div>
+            {popularesFiltradas.slice(0, 4).map(movie => (
+              <Cards key={movie.id} movie={movie} />))}
+          </div>
         </section>
         {/* Grupo 2: Mejor valoradas (endpoint movie/top_rated) */}
         <section className="grupo">
@@ -57,10 +57,16 @@ class Home extends Component {
             <Link to="/valoradas">Ver todas</Link>
           </header>
           <div className="grid">
-  {valoradasFiltradas.slice(0, 4).map(movie => (
-    <Cards key={movie.id} movie={movie} />))}
-</div>
+            {valoradasFiltradas.slice(0, 4).map(movie => (
+              <Cards key={movie.id} movie={movie} />))}
+          </div>
+
+
         </section>
+
+        {(this.state.loadingPopular || this.state.loadingValoradas) && (
+          <p className="loader-general">Cargando información de películas…</p>
+        )}
       </main>
     );
   }
