@@ -4,16 +4,24 @@ import './style.css';
 
 class Favoritos extends Component {
   constructor(props) {
-    super(props);
+   super(props);
     this.state = {
       favoritos: [],
-      cargando: true
+      verMas: false,
+      textoBoton: 'Ver mas',
+      error: '',
+      loading: true
     };
   }
   componentDidMount() {
-    const favoritosArray = localStorage.getItem('favorito');
-    const favoritos = favoritosArray ? JSON.parse(favoritosArray) : [];
-    this.setState({ favoritos });
+    let favoritosStr = localStorage.getItem('favorito');
+    let favoritos = [];
+
+    if (favoritosStr !== null) {
+      favoritos = JSON.parse(favoritosStr);
+    }
+
+    this.setState({ favoritos: favoritos, loading: false });
   }
   render() {
     const { favoritos } = this.state;
@@ -22,7 +30,7 @@ class Favoritos extends Component {
         <h1>Películas Favoritas</h1>
         <div className="grid">
           {favoritos.length === 0 ? (
-            <p>No tenés favoritos todavía.</p>
+            <p className='nopeli'>No tenés favoritos todavía.</p>
           ) : (
             favoritos.map(movie => (
               <Cards key={movie.id} movie={movie} />

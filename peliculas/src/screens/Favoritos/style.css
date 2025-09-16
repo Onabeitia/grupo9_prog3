@@ -85,6 +85,13 @@
   line-height: 1.35;
 }
 
+.nopeli{
+   font-weight: bold;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
   .grupo__header {
     flex-direction: column;
