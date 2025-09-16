@@ -7,8 +7,8 @@ import Populares from './screens/Populares/Populares'
 import Valoradas from './screens/Valoradas/Valoradas'
 import NotFound from './screens/NotFound/NotFound'
 import Favoritos from "./screens/Favoritos/Favoritos"
-
-
+import Peliculas from './screens/Peliculas/Peliculas'
+import Series from './screens/Series/Series'
 
 function App() {
   return (
@@ -16,6 +16,8 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' component={Home} exact={true} />
+        <Route path='/peliculas' component={Peliculas}/>
+        <Route path='/series' component={Series}/>
         <Route path='/populares' component={Populares} />
         <Route path='/Valoradas' component={Valoradas} />
         <Route path='/favorites' component={Favoritos} />
