@@ -26,7 +26,7 @@ class Peliculas extends Component{
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=04e6a27eeae7267e69af197c8db319ff&page=${this.state.paginaAlLlamar}`)
 	    .then((response) => response.json() )
 	    .then((data) => this.setState({
-            peliculas:(this.state.peliculas || []).concat(data.results || []),
+            peliculas:(this.state.peliculas).concat(data.results),
             pedidoInicialCompleto: true,
             paginaAlLlamar: this.state.paginaAlLlamar + 1}
         ))

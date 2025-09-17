@@ -55,7 +55,7 @@ class Cards extends Component {
           <button onClick={this.verMasVerMenos}>
             {this.state.verMas ? 'Ocultar descripción' : 'Ver descripción'}
           </button>
-          <Link to={`/detalle/${movie.id}`}>Ir a detalle</Link>
+          <Link to={`/detalle/${this.inferirTipo(movie)}/${movie.id}`}>Ir a detalle</Link>
           {this.state.esFavorito ? (
             <button onClick={() => this.eliminarFavorito(movie.id)}>Quitar de favoritos</button>
           ) : (

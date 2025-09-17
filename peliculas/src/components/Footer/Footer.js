@@ -4,7 +4,7 @@ import './styles.css'
 function Footer() {
     return (
         <footer>
-            <p>Felicitas Chiloteguy || Victoria Walton || Ona Beitia</p>
+            <p className='footer'>Felicitas Chiloteguy || Victoria Walton || Ona Beitia</p>
         </footer>
     )
 }

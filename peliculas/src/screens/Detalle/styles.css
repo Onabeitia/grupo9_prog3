@@ -1,0 +1,78 @@
+
+
+
+.detalle-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 24px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.detalle-poster {
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+.footer{
+    color: white;
+}
+.detalle-poster img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.home {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0;
+  border-radius: 6px;
+}
+
+p {
+  font-size: 1rem;
+  
+  color: black;
+}
+
+
+.detalle__acciones {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #dfba34;
+  background: #dfba34;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+ margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.detalle__acciones button:hover {
+  filter: brightness(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detalle {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detalle__poster, .detalle__info {
+    max-width: 100%;
+  }
+}
