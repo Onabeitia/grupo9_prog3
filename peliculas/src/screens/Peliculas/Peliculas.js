@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cards from "../../components/Cards/Cards";
+import BuscadorFiltrado from "../../components/BuscadorFiltrado/BuscadorFiltrado";
 import "./styles.css"
 
 class Peliculas extends Component{
@@ -9,6 +10,7 @@ class Peliculas extends Component{
             peliculas: [],
             pedidoInicialCompleto: false,
             paginaAlLlamar: 1,
+            query: ''
         }
     }
     componentDidMount(){
@@ -36,13 +38,19 @@ class Peliculas extends Component{
     render(){
         return(
             <main className="home">
+                 <BuscadorFiltrado onChange={(valor) => this.setState({query: valor})} onSubmit={(valor) => console.log('Buscar:', valor)}/>
                 <h2>Todas las películas</h2>
                 { this.state.pedidoInicialCompleto ?
                 <article>
                     <div className="grid">
-                        {this.state.peliculas.map((movie) => (
-                        <Cards key={movie.id} movie={movie} />
-                        ))}
+                        {this.state.peliculas.filter((movie) => {
+                            let titulo ='';
+                            if (movie && movie.title) titulo = movie.title.toLowerCase();
+                            let value = '';
+                            if (this.state.query) value= this.state.query.toLowerCase();
+                                return titulo.includes(value); }).map(movie => (
+                                <Cards key={movie.id} movie={movie} />
+                            ))}
                     </div>
                     <button className="botonCargar" onClick={() => this.cargarMas()}>Cargar Más</button>
                 </article>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cards from "../../components/Cards/Cards";
+import BuscadorFiltrado from "../../components/BuscadorFiltrado/BuscadorFiltrado";
 import "./styles.css"
 
 class Series extends Component{
@@ -9,6 +10,7 @@ class Series extends Component{
             series: [],
             pedidoInicialCompleto: false,
             paginaAlLlamar: 1,
+            query: ''
         }
     }
     componentDidMount(){
@@ -36,18 +38,29 @@ class Series extends Component{
     render(){
         return(
             <main className="home">
+                <BuscadorFiltrado onChange={(valor) => this.setState({query: valor})} onSubmit={(valor) => console.log('Buscar:', valor)}/>
                 <h2>Todas las series</h2>
                 { this.state.pedidoInicialCompleto ?
                 <article>
                     <div className="grid">
-                        {this.state.series.map((movie) => (
-                        <Cards key={movie.id} movie={movie} />
-                        ))}
+                        {this.state.series.filter((serie) => {
+                            let titulo = '';
+                            if (serie && serie.name) {
+                                titulo = serie.name.toLowerCase();
+                            }   else if (serie.original_name){
+                                titulo = serie.original_name.toLowerCase();
+                            } 
+                            let value = ''
+                            if (this.state.query) value = this.state.query.toLowerCase();
+                                return titulo.includes(value); }).map(serie => (
+                                    <Cards key={serie.id} movie={serie} />
+                                ))
+                        }
                     </div>
                     <button className="botonCargar" onClick={() => this.cargarMas()}>Cargar Más</button>
                 </article>
                 :  <p className="loader-general">Cargando información de series...</p>
-                }
+                }   
             </main>
         );
     }

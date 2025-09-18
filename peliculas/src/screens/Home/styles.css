@@ -6,7 +6,12 @@
   box-sizing: border-box;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
-
+html, body{
+  font-family: 'Montserrat';
+}
+h1, h2, h3, .titulo{
+  font-family: 'Inter';
+}
 /* --- Secciones (grupos) --- */
 .grupo {
   margin-bottom: 40px;
