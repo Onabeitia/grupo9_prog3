@@ -134,42 +134,6 @@
   line-height: 1.35;
 }
 
-/* --- Buscador (si querés algo básico para el form) --- */
-.buscador {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.buscador input[type="text"] {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.buscador button {
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px solid #dfba34;
-  background: #dfba34;
-  color: #fff;
-  cursor: pointer;
-}
-
-.buscador button:hover {
-  filter: brightness(0.95);
-}
-
-.loader-general {
-  text-align: center;
-  font-weight: bold;
-  margin: 20px 0;
-  font-size: 1.1rem;
-  color: #555;
-}
-
 /* --- Responsive tweaks --- */
 @media (max-width: 768px) {
   .grupo__header {

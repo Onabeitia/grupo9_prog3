@@ -60,11 +60,10 @@ class Favoritos extends Component {
 
     return (
       <main className="home">
-        <h1>Favoritos</h1>
-
+       
         {favoritosMovie && favoritosMovie.length > 0 && (
           <section className="bloque-favoritos bloque-peliculas">
-            <h2>Películas favoritas</h2>
+            <h2 className='titulo'>Películas favoritas</h2>
             <div className="grid">
               {favoritosMovie.map((item) => (
                 <Cards key={`m-${item.id}`} movie={item} />

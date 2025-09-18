@@ -3,13 +3,14 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './screens/Home/Home'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import Populares from './screens/Populares/Populares'
-import Valoradas from './screens/Valoradas/Valoradas'
+import PeliculasP from "./screens/PeliculasP/PeliculasP"
+import SeriesP from "./screens/SeriesP/SeriesP"
 import NotFound from './screens/NotFound/NotFound'
 import Favoritos from "./screens/Favoritos/Favoritos"
 import Peliculas from './screens/Peliculas/Peliculas'
 import Series from './screens/Series/Series'
 import Detalle from "./screens/Detalle/Detalle"
+import ResultadosB from './screens/ResultadosB/ResultadosB'
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
         <Route path='/peliculas' component={Peliculas}/>
         <Route path='/series' component={Series}/>
         <Route path='/detalle/:tipo/:id' component={Detalle}/>
-        <Route path='/populares' component={Populares} />
-        <Route path='/Valoradas' component={Valoradas} />
+        <Route path='/peliculasp' component={PeliculasP} />
+        <Route path='/seriesp' component={SeriesP} />
         <Route path='/favorites' component={Favoritos} />
+        <Route path='/resultadosb/:busqueda/:tipo' component={ResultadosB} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

@@ -36,7 +36,7 @@ class Series extends Component{
     render(){
         return(
             <main className="home">
-                <h1>Todas las series</h1>
+                <h2>Todas las series</h2>
                 { this.state.pedidoInicialCompleto ?
                 <article>
                     <div className="grid">

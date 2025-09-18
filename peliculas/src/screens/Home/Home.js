@@ -17,7 +17,7 @@ class Home extends Component {
       .then(r => r.json())
       .then(data => this.setState({ popular: data.results || [] }))
       .catch(() => this.setState({ popular: [] }));
-    fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=04e6a27eeae7267e69af197c8db319ff&language=es-ES&page=1')
+    fetch('https://api.themoviedb.org/3/tv/popular?api_key=04e6a27eeae7267e69af197c8db319ff&language=es-ES&page=1')
       .then(r => r.json())
       .then(data => this.setState({ valoradas: data.results || [] }))
       .catch(() => this.setState({ valoradas: [] }));
@@ -36,22 +36,22 @@ class Home extends Component {
     const valoradasFiltradas = this.filtrarPorQuery(this.state.valoradas);
     return (
       <main className="home">
-        {/* Grupo 1: Populares (endpoint movie/popular) */}
+
         <section className="grupo">
           <header className="grupo__header">
             <h2>Películas más populares</h2>
-            <Link to="/populares">Ver todas</Link>
+            <Link to="/peliculasp">Ver todas</Link>
           </header>
           <div className="grid">
             {popularesFiltradas.slice(0, 4).map(movie => (
               <Cards key={movie.id} movie={movie} />))}
           </div>
         </section>
-        {/* Grupo 2: Mejor valoradas (endpoint movie/top_rated) */}
+      
         <section className="grupo">
           <header className="grupo__header">
-            <h2>Películas mas valoradas</h2>
-            <Link to="/valoradas">Ver todas</Link>
+            <h2>Series más populares</h2>
+            <Link to="/seriesp">Ver todas</Link>
           </header>
           <div className="grid">
             {valoradasFiltradas.slice(0, 4).map(movie => (

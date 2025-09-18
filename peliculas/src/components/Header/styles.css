@@ -1,16 +1,17 @@
-/* --- Estilos base del Header --- */
+
 nav {
   background: #dfba34;
   padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 16px; 
 }
-
 .logo {
   color: white;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 
 .logo-img {
@@ -19,6 +20,7 @@ nav {
 
 .header {
   display: flex;
+  align-items: center; 
   list-style: none;
   margin: 0;
   padding: 0;
@@ -27,6 +29,8 @@ nav {
 
 .header li {
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .header a {
@@ -65,4 +69,35 @@ nav {
     font-size: 0.9rem;
     padding: 6px 8px;
   }
+}
+
+/* Alineación fina del buscador dentro del header */
+.search-form {
+  display: flex;
+  align-items: center; /* centra verticalmente todo el bloque */
+  gap: 8px;
+}
+
+.search-form label {
+  display: inline-flex;        /* el label envuelve al radio y al texto */
+  align-items: center;         /* centra el radio con el texto */
+  margin: 0;                   /* evita salto raro */
+  line-height: 1;              /* mismo alto que el control */
+}
+
+.search-form input[type="radio"] {
+  vertical-align: middle;      /* corrige desalineo en algunos navegadores */
+  margin: 0 6px 0 0;           /* separación del texto */
+}
+
+/* Ajuste de altura consistente */
+.search-form input[type="text"],
+.search-form button,
+.search-form label {
+  height: 32px;                /* mismo alto para todos los elementos */
+}
+
+.search-form button {
+  display: inline-flex;
+  align-items: center;
 }
