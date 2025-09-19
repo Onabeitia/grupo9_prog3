@@ -1,4 +1,3 @@
-
 nav {
   background: #dfba34;
   padding: 12px 20px;
@@ -95,6 +94,10 @@ nav {
 .search-form button,
 .search-form label {
   height: 32px;                /* mismo alto para todos los elementos */
+}
+
+.search-form input[type="text"] {
+  width: 200px;
 }
 
 .search-form button {

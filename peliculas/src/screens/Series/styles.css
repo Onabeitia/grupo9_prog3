@@ -168,7 +168,8 @@
   font-size: 1.1rem;
   color: #555;
 }
-.botonCargar{
+
+.botonCargar {
   display: block;
   text-align: center;
   margin: 15px auto;
@@ -187,6 +188,7 @@
   background: white;
   color: #dfba34;
 }
+
 /* --- Responsive tweaks --- */
 @media (max-width: 768px) {
   .grupo__header {

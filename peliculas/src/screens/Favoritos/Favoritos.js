@@ -60,7 +60,7 @@ class Favoritos extends Component {
 
     return (
       <main className="home">
-       
+
         {favoritosMovie && favoritosMovie.length > 0 && (
           <section className="bloque-favoritos bloque-peliculas">
             <h2 className='titulo'>Películas favoritas</h2>

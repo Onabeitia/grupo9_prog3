@@ -5,9 +5,10 @@ import './styles.css';
 class Buscador extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      busqueda: '' , 
-      tipo: '' };
+    this.state = {
+      busqueda: '',
+      tipo: ''
+    };
 
   }
 
@@ -20,20 +21,20 @@ class Buscador extends Component {
     this.setState({ busqueda: buscado.target.value });
   };
 
-   controlarSP = (buscado) => {
+  controlarSP = (buscado) => {
     this.setState({ tipo: buscado.target.value });
-    
+
   };
 
 
   render() {
     return (
       <form onSubmit={this.controlarForm} className="search-form">
-        <input onChange={this.controlarInput} type="text" placeholder="Buscar…" value={this.state.busqueda}  name="buscador" />
+        <input onChange={this.controlarInput} type="text" placeholder="Buscar…" value={this.state.busqueda} name="buscador" />
         <label>Peliculas</label>
-        <input onChange = {this.controlarSP}  type = "radio" name = "type" value = "movie"/>
+        <input onChange={this.controlarSP} type="radio" name="type" value="movie" />
         <label>Series</label>
-        <input onChange = {this.controlarSP} type = "radio" name = "type"  value = "tv"/>
+        <input onChange={this.controlarSP} type="radio" name="type" value="tv" />
         <button type="submit" className="busqueda">Buscar</button>
       </form>
     );

@@ -18,9 +18,9 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' component={Home} exact={true} />
-        <Route path='/peliculas' component={Peliculas}/>
-        <Route path='/series' component={Series}/>
-        <Route path='/detalle/:tipo/:id' component={Detalle}/>
+        <Route path='/peliculas' component={Peliculas} />
+        <Route path='/series' component={Series} />
+        <Route path='/detalle/:tipo/:id' component={Detalle} />
         <Route path='/peliculasp' component={PeliculasP} />
         <Route path='/seriesp' component={SeriesP} />
         <Route path='/favorites' component={Favoritos} />

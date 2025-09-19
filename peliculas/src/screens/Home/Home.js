@@ -47,7 +47,7 @@ class Home extends Component {
               <Cards key={movie.id} movie={movie} />))}
           </div>
         </section>
-      
+
         <section className="grupo">
           <header className="grupo__header">
             <h2>Series más populares</h2>
