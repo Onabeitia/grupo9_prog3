@@ -6,14 +6,14 @@ nav {
   justify-content: space-between;
   margin-bottom: 16px; 
 }
-.logo {
+.header-logo {
   color: white;
   display: flex;
   align-items: center;
   margin: auto;
 }
 
-.logo-img {
+.header-logo img {
   width: 60px;
 }
 
@@ -52,20 +52,21 @@ nav {
   font-size: 0.95rem;
 }
 
-.buscador {
+.search-form {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  margin-left: 50px;
   flex-wrap: nowrap;
 }
 
-.buscador input[type="text"]{
+.search-form input[type="text"]{
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid rgba(0,0,0,.1);
 }
 
-.buscador button{
+.search-form button{
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #c8951f;
@@ -88,69 +89,53 @@ nav {
 
 @media (max-width: 430px) {
   nav {
-    padding: 10px 12px;
     display: flex;
     flex-direction: column;
+    padding: 10px 12px;
     gap: 10px;
   }
 
 
-  .logo {
-    order: -1;
-    width: 100%;
+  .header-logo {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
+    order: -1
   }
-  .logo-img { width: 40px; height: 40px; }
-  .logo h2 { font-size: 1.05rem; margin: 0; }
 
-
-  .header {
+  .header li {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding-bottom: 4px; 
+    justify-content: center;
+    width: 80%;
   }
 
 
-  .header{
-    justify-content: center;
-    gap: 12px;
+  .header2{
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    font-size: 15px;
   }
 
   .logo{
     margin: 0 auto 6px;
   }
-
-  .buscador{
-    width: 90%;
-    display: flex;
+.search-form {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    flex-wrap: nowrap;   
+    margin: 0px;
   }
 
-  .buscador input[type="text"]{
-    flex: 1 1 auto;      
-    min-width: 140px;    
-    max-width: 55vw;    
-    padding: 10px 12px;
-    font-size: 0.95rem;
+  .search-form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
   }
 
-  .buscador label{ font-size: 0.95rem; }
-
-  .buscador button{
-    padding: 10px 12px;
-    font-size: 0.95rem;
-    border-radius: 8px;
-    flex: 0 0 auto;     
+  .search-form button {
+    width: 40%;
+    margin-top: 0;
   }
 }

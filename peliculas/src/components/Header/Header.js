@@ -16,7 +16,7 @@ function Header(props) {
                 <li><Buscador /></li>
             </ul>
 
-            <div className='header'>
+            <div className='header-logo'>
                 <h2>Udesa movies</h2>
                 <img src='https://images.vexels.com/media/users/3/203729/isolated/preview/d09f43d4116d9480cc034009b62428a7-dibujado-a-mano-camara-de-cine-de-cine.png' alt="logo" className='logo-img'></img>
             </div>

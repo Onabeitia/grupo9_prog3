@@ -30,11 +30,13 @@ class Buscador extends Component {
   render() {
     return (
       <form onSubmit={this.controlarForm} className="search-form">
-        <input onChange={this.controlarInput} type="text" placeholder="Buscar…" value={this.state.busqueda} name="buscador" />
-        <label>Peliculas</label>
-        <input onChange={this.controlarSP} type="radio"  name="type" value="movie" />
-        <label>Series</label>
-        <input onChange={this.controlarSP} type="radio" name="type" value="tv" />
+        <div className='search-form-row'>
+          <input onChange={this.controlarInput} type="text" placeholder="Buscar…" value={this.state.busqueda} name="buscador" />
+          <label>Peliculas</label>
+          <input onChange={this.controlarSP} type="radio"  name="type" value="movie" />
+          <label>Series</label>
+          <input onChange={this.controlarSP} type="radio" name="type" value="tv" />
+        </div>
         <button type="submit" className="busqueda">Buscar</button>
       </form>
     );
