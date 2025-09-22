@@ -13,46 +13,62 @@ class Favoritos extends Component {
   }
 
   componentDidMount() {
-    const favoritosRecuperados = localStorage.getItem('favoritos'); // [{id, type}, ...]
-    const favoritosArray = favoritosRecuperados ? JSON.parse(favoritosRecuperados) : [];
+    var favoritosRecuperados = localStorage.getItem('favoritos');
+    var favoritosArray = favoritosRecuperados ? JSON.parse(favoritosRecuperados) : [];
 
     if (!favoritosArray.length) {
       this.setState({ favoritosMovie: [], favoritosTV: [], loading: false });
       return;
     }
 
-    const favoritoItems = favoritosArray.map(favoritoItem => ({ id: favoritoItem.id, type: favoritoItem.type }));
+    const favoritosMovie = [];
+    const favoritosTV = [];
 
-    const acumulado = [];
+   function definirTipo(type) {
+      if (type === 'serie') {
+        return 'tv';
+      } else if (type === 'pelicula') {
+        return 'movie';
+      } else {
+        return type;
+      }
+    }
 
-    favoritoItems.forEach(({ id, type }) => {
-      const base = type === 'serie' ? 'tv' : type;
-      const tipo = (base === 'pelicula' || base === 'movie') ? 'movie' : base; // default movie
+    const procesar = (index) => {
+      if (index >= favoritosArray.length) {
+        this.setState({ favoritosMovie: favoritosMovie, favoritosTV: favoritosTV, loading: false });
+        return;
+      }
 
-      fetch(`https://api.themoviedb.org/3/${tipo}/${id}?api_key=04e6a27eeae7267e69af197c8db319ff&language=es-ES`)
-        .then(res => res.json())
-        .then(item => {
-          // anexamos el tipo normalizado para separar luego
-          acumulado.push({ ...item, __type: tipo });
-          if (acumulado.length === favoritoItems.length) {
-            const favoritosMovie = acumulado.filter(type => type && type.__type === 'movie');
-            const favoritosTV = acumulado.filter(type => type && type.__type === 'tv');
-            this.setState({ favoritosMovie, favoritosTV, loading: false });
+      const item = favoritosArray[index];
+      const id = item.id;
+      const tipo = definirTipo(item.type);
+      const api = 'https://api.themoviedb.org/3/' + tipo + '/' + id + '?api_key=04e6a27eeae7267e69af197c8db319ff&language=es-ES';
+
+      fetch(api)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && data.id) {
+            if (tipo === 'movie') {
+              favoritosMovie.push(data);
+            } else if (tipo === 'tv') {
+              favoritosTV.push(data);
+            }
           }
+          procesar(index + 1);
         })
-        .catch(() => {
-          acumulado.push(null);
-          if (acumulado.length === favoritoItems.length) {
-            const favoritosMovie = acumulado.filter(item => item && item.__type === 'movie');
-            const favoritosTV = acumulado.filter(item => item && item.__type === 'tv');
-            this.setState({ favoritosMovie, favoritosTV, loading: false });
-          }
+        .catch(function() {
+          procesar(index + 1);
         });
-    });
+    };
+
+    procesar(0);
   }
 
   render() {
-    const { favoritosMovie, favoritosTV, loading } = this.state;
+    const  favoritosTV = this.state.favoritosTV;
+    const favoritosMovie = this.state.favoritosMovie;
+    const  loading = this.state.loading;
 
     if (loading) return <h2>Cargando favoritos...</h2>;
     const vacias = (!favoritosMovie || favoritosMovie.length === 0) && (!favoritosTV || favoritosTV.length === 0);
@@ -66,7 +82,7 @@ class Favoritos extends Component {
             <h2 className='titulo'>Películas favoritas</h2>
             <div className="grid">
               {favoritosMovie.map((item) => (
-                <Cards key={`m-${item.id}`} movie={item} />
+                <Cards key={item.id} movie={item} />
               ))}
             </div>
           </section>
@@ -77,7 +93,7 @@ class Favoritos extends Component {
             <h2>Series favoritas</h2>
             <div className="grid">
               {favoritosTV.map((item) => (
-                <Cards key={`t-${item.id}`} movie={item} />
+                <Cards key={item.id} movie={item} />
               ))}
             </div>
           </section>
