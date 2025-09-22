@@ -19,6 +19,20 @@ class ResultadosB extends Component {
           })
           .catch(error => console.log(error));
       }
+      
+      componentDidUpdate(prevProps){
+        const busqueda = this.props.match.params.busqueda;
+        const tipo = this.props.match.params.tipo;
+
+        if (prevProps.match.params.busqueda !== busqueda || prevProps.match.params.tipo !== tipo){
+          fetch(`https://api.themoviedb.org/3/search/${tipo}?query=${busqueda}&api_key=04e6a27eeae7267e69af197c8db319ff`)
+          .then(response => response.json())
+          .then(data => {
+            this.setState({ resultados: data.results });
+          })
+          .catch(error => console.log(error));
+        }
+      }
   render() {
     const busqueda = this.props.match.params.busqueda;
     return (

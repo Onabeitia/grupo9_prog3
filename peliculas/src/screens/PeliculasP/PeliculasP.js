@@ -46,19 +46,25 @@ class PeliculasP extends Component {
         {this.state.pedidoInicialCompleto ?
           <article>
             <div className="grid">
-              {this.state.peliculas.filter((movie)=>{
-                let titulo=''
-                if (movie && movie.title){ 
-                  titulo=movie.title.toLowerCase();
+              {(() => {
+                const filtradas = this.state.peliculas.filter((movie) => {
+                  let titulo = '';
+                  if (movie && movie.title) {
+                    titulo = movie.title.toLowerCase();
+                  }
+                  let value = '';
+                  if (this.state.query) {
+                    value = this.state.query.toLowerCase();
+                  }
+                  return titulo.includes(value);
+                });
+                if (filtradas.length === 0) {
+                  return <p className="error">No hay resultados de búsqueda.</p>;
                 }
-                let value=''
-                if (this.state.query) {
-                  value=this.state.query.toLowerCase(); 
-                }
-                return titulo.includes(value);
-              }).map(movie => (
-                <Cards key={movie.id} movie={movie} />
-              ))}
+                return filtradas.map((movie) => (
+                  <Cards key={movie.id} movie={movie} />
+                ));
+              })()}
             </div>
             <button className="botonCargar" onClick={() => this.cargarMas()}>Cargar Más</button>
           </article>

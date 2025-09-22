@@ -45,19 +45,25 @@ class SeriesP extends Component {
         {this.state.pedidoInicialCompleto ?
           <article>
             <div className="grid">
-            {this.state.peliculas.filter((serie)=>{
-                let titulo=''
-                if (serie && serie.name){ 
-                  titulo=serie.original_name.toLowerCase();
+            {(() => {
+              const filtradas = this.state.peliculas.filter((serie) => {
+                let titulo = '';
+                if (serie && (serie.name || serie.original_name)) {
+                  titulo = (serie.name || serie.original_name).toLowerCase();
                 }
-                let value=''
+                let value = '';
                 if (this.state.query) {
-                  value=this.state.query.toLowerCase(); 
+                  value = this.state.query.toLowerCase();
                 }
                 return titulo.includes(value);
-              }).map(serie => (
+              });
+              if (filtradas.length === 0) {
+                return <p className="error">No hay resultados de búsqueda.</p>;
+              }
+              return filtradas.map((serie) => (
                 <Cards key={serie.id} movie={serie} />
-              ))}
+              ));
+            })()}
             </div>
             <button className="botonCargar" onClick={() => this.cargarMas()}>Cargar Más</button>
           </article>

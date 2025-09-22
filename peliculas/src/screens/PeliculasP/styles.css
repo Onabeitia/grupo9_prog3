@@ -227,7 +227,12 @@
     color: #dfba34;
    }
    
-   
+   .error {
+    font-weight: bold;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
    /* --- Responsive tweaks --- */
    @media (max-width: 768px) {
     .grupo__header {

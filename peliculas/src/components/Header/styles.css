@@ -46,61 +46,111 @@ nav {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Variante para los links secundarios */
+
 .header2 {
   font-weight: normal;
   font-size: 0.95rem;
 }
 
-/* --- Responsive --- */
-@media (max-width: 860px) {
-  nav {
-    padding: 10px 12px;
-  }
-
-  .header {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 16px;
-  }
-
-  .header a {
-    font-size: 0.9rem;
-    padding: 6px 8px;
-  }
-}
-
-/* Alineación fina del buscador dentro del header */
-.search-form {
+.buscador {
   display: flex;
-  align-items: center; /* centra verticalmente todo el bloque */
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
 }
 
-.search-form label {
-  display: inline-flex;        /* el label envuelve al radio y al texto */
-  align-items: center;         /* centra el radio con el texto */
-  margin: 0;                   /* evita salto raro */
-  line-height: 1;              /* mismo alto que el control */
+.buscador input[type="text"]{
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.1);
 }
 
-.search-form input[type="radio"] {
-  vertical-align: middle;      /* corrige desalineo en algunos navegadores */
-  margin: 0 6px 0 0;           /* separación del texto */
+.buscador button{
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #c8951f;
+  background: #c8951f;
+  color: #fff;
+  font-weight: 600;
 }
 
-/* Ajuste de altura consistente */
-.search-form input[type="text"],
-.search-form button,
-.search-form label {
-  height: 32px;                /* mismo alto para todos los elementos */
-}
-
-.search-form input[type="text"] {
-  width: 200px;
-}
-
-.search-form button {
+/* radios y etiquetas en línea prolija */
+.buscador label{
   display: inline-flex;
   align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.buscador input[type="radio"]{
+  vertical-align: middle;
+}
+
+@media (max-width: 430px) {
+  nav {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+  .logo {
+    order: -1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .logo-img { width: 40px; height: 40px; }
+  .logo h2 { font-size: 1.05rem; margin: 0; }
+
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding-bottom: 4px; 
+  }
+
+
+  .header{
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .logo{
+    margin: 0 auto 6px;
+  }
+
+  .buscador{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;   
+  }
+
+  .buscador input[type="text"]{
+    flex: 1 1 auto;      
+    min-width: 140px;    
+    max-width: 55vw;    
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .buscador label{ font-size: 0.95rem; }
+
+  .buscador button{
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    flex: 0 0 auto;     
+  }
 }
