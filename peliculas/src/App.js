@@ -7,8 +7,6 @@ import PeliculasP from "./screens/PeliculasP/PeliculasP"
 import SeriesP from "./screens/SeriesP/SeriesP"
 import NotFound from './screens/NotFound/NotFound'
 import Favoritos from "./screens/Favoritos/Favoritos"
-import Peliculas from './screens/Peliculas/Peliculas'
-import Series from './screens/Series/Series'
 import Detalle from "./screens/Detalle/Detalle"
 import ResultadosB from './screens/ResultadosB/ResultadosB'
 
@@ -18,8 +16,6 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' component={Home} exact={true} />
-        <Route path='/peliculas' component={Peliculas} />
-        <Route path='/series' component={Series} />
         <Route path='/detalle/:tipo/:id' component={Detalle} />
         <Route path='/peliculasp' component={PeliculasP} />
         <Route path='/seriesp' component={SeriesP} />

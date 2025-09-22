@@ -10,8 +10,6 @@ function Header(props) {
         <nav>
             <ul className='header'>
                 <li><Link to='/' className='header2' >Home</Link></li>
-                <li><Link to='/peliculas' className='header2'>Peliculas</Link></li>
-                <li><Link to='/series' className='header2'>Series</Link></li>
                 <li><Link to='/favorites' className='header2'>Favoritos</Link></li>
                 <li><Link to='/peliculasp' className='header2'>Peliculas populares</Link></li>
                 <li><Link to='/seriesP' className='header2'>Series populares</Link></li>
